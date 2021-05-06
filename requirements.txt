@@ -1,4 +1,4 @@
 flask
 bs4
-validators
 requests
+validators

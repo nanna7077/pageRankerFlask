@@ -19,5 +19,5 @@ def home():
     return render_template("result.html", result=result, url=request.form["userUrl"])
 
 if __name__=="__main__":
-    app.run(threaded=True, host='0.0.0.0', port=getenv("PORT"))
+    app.run(threaded=True, host='0.0.0.0', port=getenv("PORT"), debug=True)
     #app.run(threaded=True, host='0.0.0.0')

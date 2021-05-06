@@ -1,6 +1,7 @@
-import requests
+#import requests
 import re
 from bs4 import BeautifulSoup
+import cloudscraper
 
 class SimplePageRank:
     def __init__(self, url):
@@ -12,14 +13,18 @@ class SimplePageRank:
         print("current ranks", self.page_ranks, "current url", url)
         if url=='_':
             url=self.url
-        request=requests.get(self.url)
+        #request=requests.get(self.url)
+        scrapper=cloudscraper.create_scraper()
+        request=scrapper.get(self.url)
         if request.ok:
             soup=BeautifulSoup(request.text, 'html.parser')
             urls=set()
-            for link in soup.find_all('a', attrs={'href':re.compile('http')}):
+            for link in soup.find_all('a', attrs={'href':re.compile('http'), 'href': re.compile('((https?|ftp|file)://)?[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]') ,'href':re.compile('')}):
                 newurl=link.get('href')
                 if '?' in newurl:
                     newurl=newurl.split("?")[0]
+                if newurl=='':
+                    continue
                 if newurl[0]=='/':
                     newurl=self.url.rstrip('/')+newurl
                 if newurl[0]=="#":

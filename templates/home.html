@@ -2,10 +2,12 @@
 <meta charset="UTF-8">
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Page Ranker</title>
+        <meta http-equiv="X-UA-Compatible" content="ie-edge" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
         <style>
             body {
                 background: rgb(0, 0, 0);
@@ -164,8 +166,21 @@
 
             .hidden {
                 display: none;
-            };
+            }
 
+            @media screen and (max-device-width: 640px){  
+                .title0 {
+                    font-size: 150;
+                    text-align: center;
+                }
+
+                #userUrl {
+                    width: 50vh;
+                    height: 5vh;
+                    text-align: center;
+                    background-color: aliceblue;
+                }  
+            };
         </style>
     </head>
     <body>
@@ -191,8 +206,8 @@
         <div class="hidden" id="loadingscreen">Loading&#8230;</div>
     </body>
     <script type="text/javascript" charset="utf-8">
-        
-        function ShowLoading(){
+
+        async function ShowLoading(){
             var loadingDiv = document.getElementById("loadingscreen");
             loadingDiv.className="loading";
         };
