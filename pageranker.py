@@ -15,7 +15,7 @@ class SimplePageRank:
             url=self.url
         #request=requests.get(self.url)
         scrapper=cloudscraper.create_scraper()
-        request=scrapper.get(self.url)
+        request=scrapper.get(url)
         if request.ok:
             soup=BeautifulSoup(request.text, 'html.parser')
             urls=set()
