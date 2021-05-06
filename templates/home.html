@@ -1,0 +1,201 @@
+<!DOCTYPE html:5>
+<meta charset="UTF-8">
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background: rgb(0, 0, 0);
+                font-family: 'Noto Sans', sans-serif;
+                color: aliceblue;
+            }
+            
+            .title0 {
+                font-size: 50;
+            }
+
+            #userUrl {
+                width: 120vh;
+                height: 10vh;
+                text-align: center;
+                background-color: aliceblue;
+            }
+
+            .form {
+                margin-top: 20vh;
+            }
+
+            .footer {
+                margin-top: 40vh;
+            }
+
+            .submit {
+                width: 80vh;
+                height: 5vh;
+                background-color: rgb(0, 0, 0);
+                color: white;
+                border-color: whitesmoke;
+                border-radius: 10vh;
+            }
+
+            /* Absolute Center CSS Spinner */
+            .loading {
+                position: fixed;
+                z-index: 999;
+                height: 2em;
+                width: 2em;
+                overflow: show;
+                margin: auto;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                color: aliceblue;
+            }
+
+            /* Transparent Overlay */
+            .loading:before {
+                content: '';
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.3);
+            }
+
+            /* :not(:required) hides these rules from IE9 and below */
+            .loading:not(:required) {
+                /* hide "loading..." text */
+                font: 0/0 a;
+                color: transparent;
+                text-shadow: none;
+                background-color: transparent;
+                border: 0;
+            }
+
+            .loading:not(:required):after {
+                content: '';
+                display: block;
+                font-size: 10px;
+                width: 1em;
+                height: 1em;
+                margin-top: -0.5em;
+                -webkit-animation: spinner 1500ms infinite linear;
+                -moz-animation: spinner 1500ms infinite linear;
+                -ms-animation: spinner 1500ms infinite linear;
+                -o-animation: spinner 1500ms infinite linear;
+                animation: spinner 1500ms infinite linear;
+                border-radius: 0.5em;
+                -webkit-box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.5) -1.5em 0 0 0, rgba(255, 255, 255, 0.5) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+                box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) -1.5em 0 0 0, rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+            }
+
+            /* Animation */
+
+            @-webkit-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+            }
+            @-moz-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+            }
+            @-o-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+            }
+            @keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+            }
+
+            .hidden {
+                display: none;
+            };
+
+        </style>
+    </head>
+    <body>
+        <center>
+        <div class="title0">
+            Page Ranker
+        </div>
+        <div class="form">
+            <form action="#" method="POST">
+                <br>
+                <input type="textbox" name="userUrl" id="userUrl" placeholder="Enter page url to start PageRank from">
+                <br><br>
+                <input type="submit" value="Run PageRank" id="submitbutton" class="submit">
+            </form>
+        </div>
+        {% if error != None %}
+            <font color="red"><h3>{{error}}</h3></font>
+        {% endif %}
+        <div class="footer">
+            <h3>Made with 💙 by Nannan</h3>
+        </div>
+        </center>
+        <div class="hidden" id="loadingscreen">Loading&#8230;</div>
+    </body>
+    <script type="text/javascript" charset="utf-8">
+        
+        function ShowLoading(){
+            var loadingDiv = document.getElementById("loadingscreen");
+            loadingDiv.className="loading";
+        };
+
+        var SubmitButton=document.getElementById("submitbutton");
+        SubmitButton.addEventListener('click', ShowLoading, false);
+    </script>
+</html>

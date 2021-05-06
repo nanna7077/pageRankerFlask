@@ -1,0 +1,87 @@
+<!DOCTYPE html:5>
+<meta charset="UTF-8">
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background: rgb(0, 0, 0);
+                font-family: 'Noto Sans', sans-serif;
+                color: aliceblue;
+            }
+            
+            .title0 {
+                font-size: 50;
+            }
+
+            #userUrl {
+                width: 120vh;
+                height: 10vh;
+                text-align: center;
+                background-color: aliceblue;
+            }
+
+            table{
+                border: 1px solid aliceblue;
+                border-color: aliceblue;
+                border-radius: 1vh;
+                width: 100%;
+            }
+            
+            th {
+                padding: 1vh;
+                text-align: center;
+            }
+
+            td {
+                padding: 1vh;
+                text-align: center;
+            }
+
+            .footer {
+                margin-top: 40vh;
+            }
+            
+            #newpagerank {
+                width: 80vh;
+                height: 5vh;
+                background-color: rgb(0, 0, 0);
+                color: white;
+                border-color: whitesmoke;
+                border-radius: 10vh;
+            };
+
+        </style>
+    </head>
+    <body>
+        <center>
+            <div class="title0">
+                Page Ranker
+            </div>
+            <div class="line0" style="font-size: 22; margin-top: 10vh;">
+                Page ranking started from {{url}}
+            </div>
+            {% if result!={} %}
+                <div class="result" style="margin-top: 10vh;">
+                    <table id="tbl">
+                        <tr>
+                            <th>URL</th>
+                            <th>Rank</th>
+                        </tr>
+                        {% for key, value in result.items() %}
+                            <tr>
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <h5>Higher the rank, the better</h5>
+                </div>
+            {% else %}
+                <h2 style="color: red;">Check Url</h2>
+            {% endif %}
+            <br><br>
+            <a href="/" style="text-decoration: none;"><input type="button" value="Do another PageRank" id="newpagerank"></a>
+        </center>
+    </body>
