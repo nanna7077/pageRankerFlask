@@ -3,13 +3,15 @@ import re
 from bs4 import BeautifulSoup
 
 class SimplePageRank:
-
+    self.maxpages=0
     def __init__(self, url):
         self.url=url
         self.page_ranks={}
         return
 
     def startPageRank(self, url='_'):
+        if self.maxpages>100:
+            return
         print("current ranks", self.page_ranks, "current url", url)
         if url=='_':
             url=self.url
@@ -29,6 +31,7 @@ class SimplePageRank:
                     self.page_ranks[url]+=1
                 else:
                     self.page_ranks[url]=1
+                self.maxpages+=1
                 self.startPageRank(url)
         else:
             if url in self.page_ranks.keys():
