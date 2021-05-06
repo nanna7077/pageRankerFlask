@@ -3,35 +3,37 @@ import re
 from bs4 import BeautifulSoup
 
 class SimplePageRank:
-    maxpages=0
     def __init__(self, url):
-        self.url=url
+        self.url=url.rstrip("/")
         self.page_ranks={}
         return
 
     def startPageRank(self, url='_'):
-        if self.maxpages>100:
-            return
         print("current ranks", self.page_ranks, "current url", url)
         if url=='_':
             url=self.url
         request=requests.get(self.url)
         if request.ok:
             soup=BeautifulSoup(request.text, 'html.parser')
-            urls=[]
-            for link in soup.find_all(attrs={'href':re.compile("http")}):
+            urls=set()
+            for link in soup.find_all('a', attrs={'href':re.compile('http')}):
                 newurl=link.get('href')
-                newurl=newurl.split("?")[0]
+                if '?' in newurl:
+                    newurl=newurl.split("?")[0]
+                if newurl[0]=='/':
+                    newurl=self.url.rstrip('/')+newurl
+                if newurl[0]=="#":
+                    continue
+                newurl=newurl.rstrip("/")
                 if newurl in self.page_ranks.keys():
                     pass
                 else:
-                    urls.append(newurl)
+                    urls.add(newurl)
             for url in urls:
                 if url in self.page_ranks.keys():
                     self.page_ranks[url]+=1
                 else:
                     self.page_ranks[url]=1
-                self.maxpages+=1
                 self.startPageRank(url)
         else:
             if url in self.page_ranks.keys():
