@@ -19,7 +19,7 @@ class SimplePageRank:
         if request.ok:
             soup=BeautifulSoup(request.text, 'html.parser')
             urls=set()
-            for link in soup.find_all('a', attrs={'href':re.compile('http'), 'href': re.compile('((https?|ftp|file)://)?[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]') ,'href':re.compile('')}):
+            for link in soup.find_all('a', attrs={'href':re.compile('http')}):
                 newurl=link.get('href')
                 if '?' in newurl:
                     newurl=newurl.split("?")[0]
