@@ -3,7 +3,7 @@ import re
 from bs4 import BeautifulSoup
 
 class SimplePageRank:
-    self.maxpages=0
+    maxpages=0
     def __init__(self, url):
         self.url=url
         self.page_ranks={}
